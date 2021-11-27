@@ -1,4 +1,6 @@
-<?php include('login_check.php') ?>
+<?php 
+include('connect.php');
+ ?>
 <!DOCTYPE html>
 <html lang = "eng">
 	<head>
@@ -73,5 +75,6 @@
         </form>
     </div>
    <img src = "images/Learn-bulb.jpg" class = "background">	
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
-session_start();
-$_SESSION['course'] = "CS1234";
+//session_start();
+//$_COOKIE['course'] = "CS1234";
+setcookie("course","CS1234",time()+3600);
 include('head.php');
 require_once('login_check.php');
 include('connect.php');?>
@@ -30,12 +31,12 @@ include('connect.php');?>
     <li class="breadcrumb-item">
     
     <?php 
-        if($_SESSION['username'] == 'Student')
+        if($_COOKIE['username'] == 'Student')
         {?> 
     <a href="student_index.php"><i class="feather icon-home"></i> </a>
     
     <?php } 
-        else if($_SESSION['username'] == 'Teacher')
+        else if($_COOKIE['username'] == 'Teacher')
         {?> 
     <a href="teacher_index.php"><i class="feather icon-home"></i> </a>
     <?php } ?>
@@ -114,7 +115,7 @@ include('connect.php');?>
 </style>
         </head>
         <?php
-        if($_SESSION['username'] == 'Student')
+        if($_COOKIE['username'] == 'Student')
         {?>
             
             <body>
@@ -161,7 +162,7 @@ include('connect.php');?>
            
         <?php }
     
-        else if($_SESSION['username'] == 'Teacher')
+        else if($_COOKIE['username'] == 'Teacher')
         {?>
     <body>
             <div class="container-fluid">

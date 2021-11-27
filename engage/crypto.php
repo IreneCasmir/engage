@@ -1,6 +1,7 @@
 <?php
-session_start();
-$_SESSION['course'] = "CS6789";
+//session_start();
+//$_COOKIE['course'] = "CS6789";
+setcookie("course","CS6789",time()+3600);
 include('head.php');
 require_once('login_check.php');
 include('connect.php');?>
@@ -25,11 +26,19 @@ include('connect.php');?>
 </div>
 <div class="col-lg-4">
 <div class="page-header-breadcrumb">
-<ul class="breadcrumb-title">
-<li class="breadcrumb-item">
-<a href="student_index.php"><i class="feather icon-home"></i> </a>
-</li>
-</ul>
+<?php 
+        if($_COOKIE['username'] == 'Student')
+        {?> 
+    <a href="student_index.php"><i class="feather icon-home"></i> </a>
+    
+    <?php } 
+        else if($_COOKIE['username'] == 'Teacher')
+        {?> 
+    <a href="teacher_index.php"><i class="feather icon-home"></i> </a>
+    <?php } ?>
+
+    </li>
+    </ul>
 
 <div class="navbar-wrapper">
 <div class="navbar-container container-fluid">
@@ -101,7 +110,7 @@ include('connect.php');?>
     </style>
         </head>
         <?php
-        if($_SESSION['username'] == 'Student')
+        if($_COOKIE['username'] == 'Student')
     {?>
         
         <body>
@@ -147,7 +156,7 @@ include('connect.php');?>
         </body>
     <?php }
 
-    else if($_SESSION['username'] == 'Teacher')
+    else if($_COOKIE['username'] == 'Teacher')
     {?>
 <body>
         <div class="container-fluid">
@@ -170,7 +179,7 @@ include('connect.php');?>
         <!--</div> -->
 <!--  -->
        <!-- <div id="quiz" class="container-fluid">-->
-            <form action="resources.php" method="post">
+            <form action="set_quizzes.php" method="post">
 
             <div class="container-fluid">    
             <div class="row">
@@ -179,7 +188,7 @@ include('connect.php');?>
             <div class = "card">
             <img src="images/quiz.jpg" alt="Quiz" style="width:100%">
             <div style="background-color:White;" class = "form-group">
-            <a href="resources.php"> Set Quizzes </a>
+            <a href="set_quizzes.php"> Set Quizzes </a>
             </div>
             </div>
             </div>

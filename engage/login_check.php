@@ -1,5 +1,6 @@
 <?php
-	session_start();
+include('connect.php');
+	//session_start();
 	
 	if(ISSET($_POST['login'])){
 		if (isset($_POST['username'])) {
@@ -28,12 +29,19 @@
 		if($valid > 0){
 			if(password_verify($password,$fetch['password']))
 				{
-				  $_SESSION['uid'] = $uid;
-				  $_SESSION['username'] = $username;
-				  if($_POST['username'] == 'Student'){	
+				  /*$_SESSION['uid'] = $uid;
+				  $_SESSION['username'] = $username;*/
+				  
+				  if($_POST['username'] == 'Student'){
+					setcookie("uid",$_POST["uid"],time()+3600);
+					setcookie("username",$_POST["username"],time()+3600);
+					setcookie("password",$_POST["password"],time()+3600);	
 					header("location: student_index.php");
 			          }
 				  else if($_POST['username'] == 'Teacher'){
+					setcookie("uid",$_POST["uid"],time()+3600);
+					setcookie("username",$_POST["username"],time()+3600);
+					setcookie("password",$_POST["password"],time()+3600);
 					header("location: teacher_index.php");
 				  }
 				}

@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include('head.php');
 include('connect.php');
 ?>
@@ -60,30 +60,48 @@ include('connect.php');
     
     <div class="form-group row">
                 <br />
-				<div class="form-group">
+				<!--<div class="form-group">
 				  <select name="quizname" class="form-control" required="required">
 				    <option value="">-- Select One --</option>
 				    <option value="Quiz1">Quiz1</option>
 				    <option value="Quiz2">Quiz2</option>  
                     <option value="Quiz3">Quiz3</option>    
 				  </select>
-				</div>
+				</div>-->
+                <label style="margin-right:5px;">Enter Quiz name here </label>
+                <input style="width:auto;" type="text" class="form-control" name="quiz_name" placeholder="Enter the name of the Quiz" required="" >
+
 				<br />
                 
         <!--<label class="col-sm-4 col-form-label">Date</label> -->
         <div class="col-sm-6">
             <input type="date" class="form-control" name="date" placeholder="Enter the Date for the Quiz" required="" >
         </div>
+        <div class="col-sm-8">
+            <label style="margin-right:5px;margin-top:10px;">Quiz duration in minutes </label>
+            <input style="width:100px;margin-top:10px;" type="text" class="form-control" name="durn" placeholder="Enter the duration for the Quiz" required="" >
+        </div>
+       <!-- <div class="col-sm-6">
+            <label style="margin-right:5px;margin-top:10px;">Enter Quiz time here </label>
+            <input style="width:400px;margin-top:10px;" type="time" step='1' min="07:00:00" max="17:00:00" class="form-control" name="set_time" placeholder="Quiz time here" required="" >
+        </div>-->
 
     </div>
     <div class="form-group row">
         <label class="col-sm-2"></label>
         <div class="col-sm-10">
-            <button type="submit" name="btn_submit" class="btn btn-primary m-b-0">Save</button>
-        </div>
+            <button type="submit" name="set_date" class="btn btn-primary m-b-0">Set Quiz Date</button>
+        </div></div> 
+
     </div>
 
 </form>
+<div class="form-group row">
+        <form action="make_quiz.php" method="post">
+        <div class="col-sm-10">
+            <button type="submit" name="make_quiz" class="btn btn-primary m-b-0">Make a Quiz</button>
+        </div></form></div>
+
 </div>
 </div>
 </div>
@@ -96,11 +114,11 @@ include('connect.php');
 
 <?php
 
-if(isset($_POST['btn_submit'])){
-	$cid = $_SESSION['course'];
+if(isset($_POST['set_date'])){
+	$cid = $_COOKIE['course'];
     $date = $_POST['date'];
-    $qtype = $_POST['quizname'];
-    
+    $qtype = $_POST['quiz_name'];
+    //$q_time = $_POST['set_time'];
         if($date < date("Y-m-d"))
         {
             echo "<script>alert('Set a Valid date!')</script>";
@@ -108,8 +126,12 @@ if(isset($_POST['btn_submit'])){
         }
         else
         {
-           $sql = "Call Update_quiz ('$cid','$qtype','$date')";
+           $durn = $_POST['durn'];
+           $sql = "Insert into exams (course_id,quiz_name,quiz_date,quiz_time,duration) values ('$cid','$qtype','$date','10:00:00','$durn')";
            $result = $conn->query($sql);
+
+            $query = "CALL `table_creation` ('$cid','$qtype')";
+            $result=mysqli_query($conn,$query);
         }
     }
 

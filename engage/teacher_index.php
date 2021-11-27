@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+//session_start();
 include('head.php');
 require_once('login_check.php');
 include('connect.php');?>
@@ -18,7 +18,7 @@ include('connect.php');?>
 <div class="page-header-title">
 <div class="d-inline">
 <h2> Welcome 
-            <strong><?php echo $_SESSION['uid']; ?>
+            <strong><?php echo $_COOKIE['uid']; ?>
             </strong>
         </h2>
 </div>
@@ -56,7 +56,7 @@ include('connect.php');?>
 <!DOCTYPE html>
 <html lang="english">
         <head>
-        <title>Student Home</title>
+        <title>Teacher Home</title>
         <meta charset = "utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="styles.css">
@@ -65,15 +65,10 @@ include('connect.php');?>
         </head>
         <body>
 
-       <!-- <div style="background-color:white;">
-        <h2> Welcome 
-            <strong><?php echo $_SESSION['uid']; ?>
-            </strong>
-        </h2>
-        </div>-->
+       
 
         <?php 
-        $u = $_SESSION['uid'];
+        $u = $_COOKIE['uid'];
         //$v="Select `s_name` from `student` where s_id='$u'";
         //$conn = new mysqli("localhost", "root", "mysql", "mini_lms") or die(mysqli_error());
 

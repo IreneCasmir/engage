@@ -22,12 +22,12 @@
 <div class="page-header-breadcrumb">
 <ul class="breadcrumb-title">
 <li class="breadcrumb-item">
-  <?php if($_SESSION['username'] == 'Student')
+  <?php if($_COOKIE['username'] == 'Student')
     {?>
     <a href="student_index.php"><i class="feather icon-home"></i> </a>
     
     <?php }
-    else if($_SESSION['username'] == 'Teacher')
+    else if($_COOKIE['username'] == 'Teacher')
     {?>
     <a href="teacher_index.php"><i class="feather icon-home"></i> </a>
     <?php } ?>
@@ -71,7 +71,7 @@
 </thead>
 <tbody> 
     <?php
-    $course = $_SESSION['course'];
+    $course = $_COOKIE['course'];
     $query = "select * from student where s_id in(select s_id from courses_taken where course_id='$course')";
     $qsql = $conn->query($query);
   while($rs = mysqli_fetch_array($qsql))

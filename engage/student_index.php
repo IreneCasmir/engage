@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+//session_start();
 include('head.php');
 require_once('login_check.php');
 include('connect.php');?>
@@ -18,7 +18,7 @@ include('connect.php');?>
 <div class="page-header-title">
 <div class="d-inline">
 <h2> Welcome 
-            <strong><?php echo $_SESSION['uid']; ?>
+            <strong><?php echo $_COOKIE['uid']; ?>
             </strong>
         </h2>
 </div>
@@ -89,10 +89,14 @@ include('connect.php');?>
   color:Black;
 }
 
+.sidebar a
+{
+    color:Black;
+}
 .openbtn {
   font-size: 20px;
   cursor: pointer;
-  background-color: White;
+  background-color: Silver;
   color: Blue;
   padding: 10px 15px;
   border: none;
@@ -109,7 +113,7 @@ include('connect.php');?>
         <body >
 
        <?php  
-        $u = $_SESSION['uid'];
+        $u = $_COOKIE['uid'];
         //$v="Select `s_name` from `student` where s_id='$u'";
         //$conn = new mysqli("localhost", "root", "mysql", "mini_lms") or die(mysqli_error());
 
@@ -190,14 +194,12 @@ include('connect.php');?>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <?php 
   
-    $sql1 = mysqli_query($conn,"Select * from quiz where course_id in(Select course_id from courses_taken where s_id='$u')");
+    $sql1 = mysqli_query($conn,"Select * from exams where course_id in(Select course_id from courses_taken where s_id='$u') and quiz_date > date('Y-m-d')");
     while ($row = mysqli_fetch_assoc($sql1)) 
      { 
-        if(!(is_null($row['Quiz1'])))
-        { 
-            echo nl2br("<h4>".$row['course_id']."-Quiz1 on ".$row['Quiz1']."\n\n</h4>");
-        }
+        echo nl2br("<h4>".$row['course_id']." - ".$row['quiz_name']." on ".$row['quiz_date']."\n\n</h4>");
 
+        /*
         if(!(is_null($row['Quiz2'])))
         { 
             echo nl2br("<h4>".$row['course_id']."-Quiz2 on ".$row['Quiz2']."\n\n</h4>");
@@ -206,8 +208,18 @@ include('connect.php');?>
         if(!(is_null($row['Quiz3'])))
         { 
             echo nl2br("<h4>".$row['course_id']."-Quiz3 on ".$row['Quiz3']."\n\n</h4>");
-        }
+        }*/
      } ?>
+
+<button id="gotoquiz" class="openbtn" >Attempt Quizzes</button>
+
+<script type="text/javascript">
+    document.getElementById("gotoquiz").onclick = function () {
+        location.href = "quizview.php";
+    };
+</script>
+
+
 </div>
 <script>
 function openNav() {

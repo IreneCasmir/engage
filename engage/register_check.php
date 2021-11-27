@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 
 $userID = "";
 $errors = array();
@@ -111,7 +111,7 @@ if(count($errors) == 0)
         {
             $query2 = "INSERT INTO `student_login` (id,password) VALUES ('$userID','$hash')";
             mysqli_query($db,$query2);
-            $_SESSION['userID'] = $userID;
+            //$_SESSION['userID'] = $userID;
             header('location:login.php');
         }
         else
@@ -128,7 +128,7 @@ if(count($errors) == 0)
         {
             $query2 = "INSERT INTO `teacher_login` (id,password) VALUES ('$userID','$hash')";
             mysqli_query($db,$query2);
-            $_SESSION['userID'] = $userID;
+            //$_SESSION['userID'] = $userID;
             header('location:login.php');
         }
         else

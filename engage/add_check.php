@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include('head.php');
 include('connect.php');?>
 
@@ -31,12 +31,12 @@ include('connect.php');?>
 <div class="page-header-breadcrumb">
 <ul class="breadcrumb-title">
 <li class="breadcrumb-item">
-    <?php if($_SESSION['username'] == 'Student')
+    <?php if($_COOKIE['username'] == 'Student')
     {?>
     <a href="student_index.php"><i class="feather icon-home"></i> </a>
     
     <?php }
-    else if($_SESSION['username'] == 'Teacher')
+    else if($_COOKIE['username'] == 'Teacher')
     {?>
     <a href="teacher_index.php"><i class="feather icon-home"></i> </a>
     <?php } ?>
@@ -75,17 +75,27 @@ include('connect.php');?>
 <?php
     
     $conn = mysqli_connect('localhost','root','mysql','mini_lms') or die("could not connect to database");
-    $course = $_SESSION['course'];
+    $course = $_COOKIE['course'];
 
     if(isset($_POST['ADDlink']))
     {     
-            $link = mysqli_real_escape_string($conn,$_POST['link']);
-            mysqli_query($conn,"Insert into `resources` (c_id,link) values ('$course','$link')");
+            if(isset($_POST['res']))
+            $text = mysqli_real_escape_string($conn,$_POST['res']);
+
+            if(isset($_POST['link']))
+            {
+             $link = mysqli_real_escape_string($conn,$_POST['link']);
+             mysqli_query($conn,"Insert into `Resources` (course_id,link,text) values ('$course','$link','$text')");
+            }
+            else
+            {
+              mysqli_query($conn,"Insert into `Resources` (course_id,text) values ('$course','$text')"); 
+            }
             header("location: resources.php");
         
     }
 
-    if(isset($_POST['VIEWlinks']))
+    /*if(isset($_POST['VIEWlinks']))
     {
         $query = "Select link from resources where c_id='$course'";
         $qsql = $conn->query($query); ?>
@@ -108,7 +118,7 @@ include('connect.php');?>
           </tr>";
         }  
     }      
-      ?>
+     */ ?>
     </tbody>
     </table>
     </div>
