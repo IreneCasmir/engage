@@ -46,12 +46,12 @@ include('connect.php');
 				else
 				{
 				 echo "<script>alert('Password mismatch!')</script>";
-				 echo "<script>window.location = 'login.php'</script>";
+				 echo "<script>window.location = 'index.php'</script>";
 				}
 			}
 			else{
 				 echo "<script>alert('Account Does Not Exist!')</script>";
-				 echo "<script>window.location = 'login.php'</script>";
+				 echo "<script>window.location = 'index.php'</script>";
 			}
 
 }

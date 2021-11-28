@@ -69,7 +69,7 @@
                     </button>
 			</div>
             <div style="background-color:White;" class = "form-group">
-                <p>Already Registered? <a href="login.php"><b>Log in</b></p>
+                <p>Already Registered? <a href="index.php"><b>Log in</b></p>
             </div>
         </div>
         </form>

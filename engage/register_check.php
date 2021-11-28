@@ -138,11 +138,7 @@ if(count($errors) == 0)
         }
     }
    
-    /*$_SESSION['userID'] = $userID;
-    $_SESSION['success'] = "Logged In";
-
-    header('location:login.php');*/
-
+   
 }
 else
 {
