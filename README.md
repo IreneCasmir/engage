@@ -31,3 +31,8 @@ The teacher names already there in the database are shown in ***teacher*** table
 The passwords for already registered students and teachers is their name itself.
 
 To add new student or teacher logins,not there in ***student*** or ***teacher*** tables,first add them to these tables in the database and then register to the portal.
+
+Some of the already registered user credentials are:
+Student 11112 password-Gautham
+Student 11113 password-Geetha
+Teacher T567 password-Ron
