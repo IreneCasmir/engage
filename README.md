@@ -7,10 +7,10 @@ To set up:
 
 * Set up LAMP and clone the repo
 * Set the environment variables as:
-** $DB_SERVER = "localhost"
-** $DB_USERNAME = <username>(developed with root as username)
-** $DB_PASSWORD = <database password>
-** $DB_DBNAME = <mysql database name>
+    * $DB_SERVER = "localhost"
+    * $DB_USERNAME = <username>(developed with root as username)
+    * $DB_PASSWORD = <database password>
+    * $DB_DBNAME = <mysql database name>
 in the configuration files of apache(if not using apache via CLI) or else in the operating system ENV variables.
 
 The student names already there in the database are shown in ***student*** table and the students already registered who can directly login without registering are as shown in ***student_login*** table:
