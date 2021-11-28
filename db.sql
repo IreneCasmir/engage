@@ -123,7 +123,7 @@ CREATE TABLE `Resources` (
 
 LOCK TABLES `Resources` WRITE;
 /*!40000 ALTER TABLE `Resources` DISABLE KEYS */;
-INSERT INTO `Resources` VALUES ('CS1234','https://www.geeksforgeeks.org/operating-systems/','Intro to Operating Systems'),('CS1234','','Popular Operating Systems are Windows,LINUX etc.,'),('CS1234','https://www.uow.edu.au/student/learning-co-op/technology-and-software/operating-systems/','understanding OS'),('CS2345','https://www.hitbullseye.com/Probability-Examples.php','questions on probability'),('CS4567','https://www.mips.com/','MIPS'),('CS5678','https://www.javatpoint.com/machine-learning-interview-questions','ml interview questions'),('CS5678','https://mcqmate.com/topic/3/machine-learning-set-1','questions on ML'),('CS6789','https://www.kaspersky.com/resource-center/definitions/what-is-cryptography','intro'),('CS9009','https://www.youtube.com/watch?v=NybHckSEQBI','algebra basics');
+INSERT INTO `Resources` VALUES ('CS1234','https://www.geeksforgeeks.org/operating-systems/','Intro to Operating Systems'),('CS1234','https://www.webopedia.com/definitions/operating-system/','OS'),('CS1234','','Popular Operating Systems are Windows,LINUX etc.,'),('CS1234','https://www.uow.edu.au/student/learning-co-op/technology-and-software/operating-systems/','understanding OS'),('CS2345','https://www.hitbullseye.com/Probability-Examples.php','questions on probability'),('CS4567','https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/','CO'),('CS4567','https://www.geeksforgeeks.org/computer-organization-basic-computer-instructions/?ref=lbp','CO link'),('CS4567','https://www.geeksforgeeks.org/computer-organization-von-neumann-architecture/?ref=lbp','CO new'),('CS4567','https://www.geeksforgeeks.org/computer-organization-instruction-formats-zero-one-two-three-address-instruction/?ref=lbp','CO res'),('CS4567','https://www.mips.com/','MIPS'),('CS5678','https://www.javatpoint.com/machine-learning-interview-questions','ml interview questions'),('CS5678','https://mcqmate.com/topic/3/machine-learning-set-1','questions on ML'),('CS6789','https://www.kaspersky.com/resource-center/definitions/what-is-cryptography','intro'),('CS9009','https://www.youtube.com/watch?v=NybHckSEQBI','algebra basics');
 /*!40000 ALTER TABLE `Resources` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `courses_taken` (
 
 LOCK TABLES `courses_taken` WRITE;
 /*!40000 ALTER TABLE `courses_taken` DISABLE KEYS */;
-INSERT INTO `courses_taken` VALUES ('11111','CS1234'),('11111','CS2345'),('11111','CS5678'),('11112','CS1234'),('11112','CS2345'),('11112','CS4567'),('11112','CS5678'),('11112','CS9009'),('11113','CS1234'),('11113','CS3456'),('11113','CS4567'),('11113','CS5678'),('11113','CS6789'),('11113','CS9009'),('11114','CS1234'),('11114','CS4567'),('11114','CS5678'),('11114','CS9009'),('11122','CS1234'),('11122','CS2345'),('11122','CS4567'),('11122','CS5678'),('11122','CS9009'),('11134','CS3456'),('11134','CS5678'),('11134','CS9009');
+INSERT INTO `courses_taken` VALUES ('11111','CS1234'),('11111','CS2345'),('11111','CS5678'),('11112','CS1234'),('11112','CS2345'),('11112','CS4567'),('11112','CS5678'),('11112','CS9009'),('11113','CS1234'),('11113','CS3456'),('11113','CS4567'),('11113','CS5678'),('11113','CS6789'),('11113','CS9009'),('11114','CS1234'),('11114','CS4567'),('11114','CS5678'),('11114','CS9009'),('11122','CS1234'),('11122','CS2345'),('11122','CS4567'),('11122','CS5678'),('11122','CS9009'),('11134','CS3456'),('11134','CS5678'),('11134','CS9009'),('11199','CS1234'),('11199','CS2345');
 /*!40000 ALTER TABLE `courses_taken` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +282,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('11111','Deena'),('11112','Gautham'),('11113','Geetha'),('11114','Hima'),('11115','Ishaan'),('11116','Jai'),('11122','Riya'),('11124','Rehan'),('11134','Tessy');
+INSERT INTO `student` VALUES ('11111','Deena'),('11112','Gautham'),('11113','Geetha'),('11114','Hima'),('11115','Ishaan'),('11116','Jai'),('11122','Riya'),('11124','Rehan'),('11134','Tessy'),('11199','Priya');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,7 +307,7 @@ CREATE TABLE `student_login` (
 
 LOCK TABLES `student_login` WRITE;
 /*!40000 ALTER TABLE `student_login` DISABLE KEYS */;
-INSERT INTO `student_login` VALUES ('11112','$2y$10$3ZjAmNq9e4z6rk/j0vc2qeVioyGVMFI.9YTNfKLcwWMTzpsMQQqC.'),('11113','$2y$10$u.xgGuYeLE02VIaFjhD88.6U9SLCuLfdajES7lSsprIFQ0RbG8NAK'),('11114','$2y$10$libcMlJbE5cXOSqLCl1obeXqjQ5YjKUnx.v0bXCtC5WWsEujeohsG');
+INSERT INTO `student_login` VALUES ('11112','$2y$10$3ZjAmNq9e4z6rk/j0vc2qeVioyGVMFI.9YTNfKLcwWMTzpsMQQqC.'),('11113','$2y$10$u.xgGuYeLE02VIaFjhD88.6U9SLCuLfdajES7lSsprIFQ0RbG8NAK'),('11114','$2y$10$libcMlJbE5cXOSqLCl1obeXqjQ5YjKUnx.v0bXCtC5WWsEujeohsG'),('11134','$2y$10$32MwplzYlLraumRGu1apdOqgGS5zKHe68FTZVTeU2F0aSlYUKJHyS'),('11199','$2y$10$vWOo5jBJnCq8mHt8avd3H./RH/xlaWZfkpgFZy2Wo5W21fclL39si');
 /*!40000 ALTER TABLE `student_login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-28 17:46:32
+-- Dump completed on 2021-11-28 21:32:33

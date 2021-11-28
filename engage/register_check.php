@@ -6,7 +6,7 @@ $userID = "";
 $errors = array();
 
 //connect to database
-//$db = mysqli_connect('localhost','root','mysql','mini_lms') or die("could not connect to database");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if(isset($_POST['register']))
 {
@@ -146,39 +146,5 @@ else
     echo "<script>window.location = 'register.php'</script>";
 }
 }
-
-//login
-/*
-if(isset($_POST['login']))
-{
-    $uid = mysqli_real_escape_string($db,$_POST['uid']);
-    $password = mysqli_real_escape_string($db,$_POST['password']);
-
-    if(empty($uid))
-    {
-        array_push($errors,"Missing credentials!");
-    }
-    if(empty($password))
-    {
-        array_push($errors,"Missing credentials!");
-    }
-    if(count($errors) == 0)
-    {
-        $password = md5($password);
-        $query = "SELECT * FROM login WHERE user_id='$uid' AND password='$password'";
-        $results = mysqli_query($db,$query);
-
-        if(mysqli_num_rows($results))
-        {
-            $_SESSION['uid'] = $uid;
-            $_SESSION['success'] = "Logged In";
-            header("location:index.php");
-        }
-        else
-        {
-            array_push($errors,"Wrong credentials!");
-        }
-    }
-}*/
 
 ?>
