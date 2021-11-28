@@ -18,20 +18,21 @@ body{
   }
   
 .home a,.home a:visited{
-       color: blue;
+       color: grey;
   }
   
   
 .home {
     margin: 3% 30%;
   }
-  
+ /* 
 .box {
-    border: 2px solid white;
-    padding: 10px;
+  
+    border: 0px solid Silver;
+    padding: 20px;
     border-radius: 20px;
     height: 15px;
     margin-top: 15px;
     align-items: center;
   }
-  
+ */ 

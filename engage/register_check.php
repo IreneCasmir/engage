@@ -1,12 +1,12 @@
 <?php
-
+include('connect.php');
 //session_start();
 
 $userID = "";
 $errors = array();
 
 //connect to database
-$db = mysqli_connect('localhost','root','mysql','mini_lms') or die("could not connect to database");
+//$db = mysqli_connect('localhost','root','mysql','mini_lms') or die("could not connect to database");
 
 if(isset($_POST['register']))
 {

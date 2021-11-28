@@ -2,6 +2,10 @@
   session_start();
   include('head.php');
   include('connect.php');?>
+<!DOCTYPE html>
+<html lang="english">
+<body style="background-image: linear-gradient(to right, grey, white);">
+
 <div class="pcoded-content">
 <div class="pcoded-inner-content">
 
@@ -110,3 +114,5 @@
 </div>
 </div>
 </div>
+</body>
+</html>

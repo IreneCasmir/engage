@@ -62,8 +62,47 @@ include('connect.php');?>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <link rel = "stylesheet" type = "text/css" href = "bootstrap.css" />
 		<link rel = "stylesheet" type = "text/css" href = "customize.css" />
+
+        <style>
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: Grey;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+}
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:Black;
+}
+
+
+.box {
+  font-size: 20px;
+  cursor: pointer;
+  color: Blue;
+  padding: 10px;
+  text-align:center;
+  border: none;
+}
+
+
+</style>  
+    
         </head>
-        <body>
+        <body style="background-image: linear-gradient(to right, grey, white);">
 
        
 
@@ -80,6 +119,17 @@ include('connect.php');?>
             <ul>
                 <li>
                     <a href="ml.php"><div class="box">Machine Learning</div></a>
+                </li>
+            </ul>
+            </div>
+            <?php } 
+
+            if($row[course_name] == 'Algebra')
+            {?>
+            <div class = "home">
+            <ul>
+                <li>
+                    <a href="algebra.php"><div class="box">Algebra</div></a>
                 </li>
             </ul>
             </div>

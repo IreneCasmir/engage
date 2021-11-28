@@ -71,6 +71,37 @@ LOCK TABLES `CS6789_Quiz0` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Questions`
+--
+
+DROP TABLE IF EXISTS `Questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Questions` (
+  `course_id` varchar(20) NOT NULL,
+  `qname` varchar(20) NOT NULL,
+  `qn` varchar(200) DEFAULT NULL,
+  `ans` varchar(100) NOT NULL,
+  `opt1` varchar(100) NOT NULL,
+  `opt2` varchar(100) NOT NULL,
+  `opt3` varchar(100) NOT NULL,
+  PRIMARY KEY (`qname`,`course_id`),
+  KEY `course_id` (`course_id`),
+  CONSTRAINT `Questions_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Questions`
+--
+
+LOCK TABLES `Questions` WRITE;
+/*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
+INSERT INTO `Questions` VALUES ('CS1234','quiz1','Linux is not an operating system','false','false','true','none of the above');
+/*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Resources`
 --
 
@@ -92,7 +123,7 @@ CREATE TABLE `Resources` (
 
 LOCK TABLES `Resources` WRITE;
 /*!40000 ALTER TABLE `Resources` DISABLE KEYS */;
-INSERT INTO `Resources` VALUES ('CS1234','https://www.geeksforgeeks.org/operating-systems/','Intro to Operating Systems'),('CS1234','','Popular Operating Systems are Windows,LINUX etc.,'),('CS5678','https://mcqmate.com/topic/3/machine-learning-set-1','questions on ML');
+INSERT INTO `Resources` VALUES ('CS1234','https://www.geeksforgeeks.org/operating-systems/','Intro to Operating Systems'),('CS1234','','Popular Operating Systems are Windows,LINUX etc.,'),('CS1234','https://www.uow.edu.au/student/learning-co-op/technology-and-software/operating-systems/','understanding OS'),('CS2345','https://www.hitbullseye.com/Probability-Examples.php','questions on probability'),('CS4567','https://www.mips.com/','MIPS'),('CS5678','https://www.javatpoint.com/machine-learning-interview-questions','ml interview questions'),('CS5678','https://mcqmate.com/topic/3/machine-learning-set-1','questions on ML'),('CS6789','https://www.kaspersky.com/resource-center/definitions/what-is-cryptography','intro'),('CS9009','https://www.youtube.com/watch?v=NybHckSEQBI','algebra basics');
 /*!40000 ALTER TABLE `Resources` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +147,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES ('CS1234','Operating Systems'),('CS2345','Probability'),('CS3456','Logic'),('CS4567','Computer Architecture'),('CS5678','Machine Learning'),('CS6789','Cryptography');
+INSERT INTO `course` VALUES ('CS1234','Operating Systems'),('CS2345','Probability'),('CS3456','Logic'),('CS4567','Computer Architecture'),('CS5678','Machine Learning'),('CS6789','Cryptography'),('CS9009','Algebra');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +174,7 @@ CREATE TABLE `courses_taken` (
 
 LOCK TABLES `courses_taken` WRITE;
 /*!40000 ALTER TABLE `courses_taken` DISABLE KEYS */;
-INSERT INTO `courses_taken` VALUES ('11111','CS1234'),('11111','CS2345'),('11111','CS5678'),('11112','CS1234'),('11112','CS2345'),('11112','CS4567'),('11112','CS5678'),('11113','CS1234'),('11113','CS3456'),('11113','CS4567'),('11113','CS5678'),('11113','CS6789'),('11114','CS1234'),('11114','CS4567'),('11114','CS5678');
+INSERT INTO `courses_taken` VALUES ('11111','CS1234'),('11111','CS2345'),('11111','CS5678'),('11112','CS1234'),('11112','CS2345'),('11112','CS4567'),('11112','CS5678'),('11112','CS9009'),('11113','CS1234'),('11113','CS3456'),('11113','CS4567'),('11113','CS5678'),('11113','CS6789'),('11113','CS9009'),('11114','CS1234'),('11114','CS4567'),('11114','CS5678'),('11114','CS9009'),('11122','CS1234'),('11122','CS2345'),('11122','CS4567'),('11122','CS5678'),('11122','CS9009'),('11134','CS3456'),('11134','CS5678'),('11134','CS9009');
 /*!40000 ALTER TABLE `courses_taken` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +201,7 @@ CREATE TABLE `courses_taught` (
 
 LOCK TABLES `courses_taught` WRITE;
 /*!40000 ALTER TABLE `courses_taught` DISABLE KEYS */;
-INSERT INTO `courses_taught` VALUES ('T123','CS1234'),('T234','CS2345'),('T345','CS3456'),('T456','CS4567'),('T567','CS5678'),('T567','CS6789');
+INSERT INTO `courses_taught` VALUES ('T123','CS1234'),('T123','CS9009'),('T234','CS2345'),('T345','CS3456'),('T456','CS4567'),('T567','CS5678'),('T567','CS6789');
 /*!40000 ALTER TABLE `courses_taught` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,33 +229,8 @@ CREATE TABLE `exams` (
 
 LOCK TABLES `exams` WRITE;
 /*!40000 ALTER TABLE `exams` DISABLE KEYS */;
-INSERT INTO `exams` VALUES ('CS5678','Quiz1','2021-11-30','10:00:00','00:00:10'),('CS6789','Quiz0','2021-11-30','10:00:00','00:00:10');
+INSERT INTO `exams` VALUES ('CS1234','quiz1','2021-11-29','10:00:00','00:00:12'),('CS1234','quiz2','2021-11-29','10:00:00','00:01:20'),('CS5678','Quiz1','2021-11-30','10:00:00','00:00:10'),('CS6789','Quiz0','2021-11-30','10:00:00','00:00:10');
 /*!40000 ALTER TABLE `exams` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `quizzes`
---
-
-DROP TABLE IF EXISTS `quizzes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `quizzes` (
-  `course_id` varchar(20) NOT NULL,
-  `quiz_name` varchar(50) NOT NULL,
-  `quiz_date` date DEFAULT NULL,
-  PRIMARY KEY (`course_id`,`quiz_name`),
-  CONSTRAINT `quizzes_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `quizzes`
---
-
-LOCK TABLES `quizzes` WRITE;
-/*!40000 ALTER TABLE `quizzes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `quizzes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -276,7 +282,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('11111','Deena'),('11112','Gautham'),('11113','Geetha'),('11114','Hima'),('11115','Ishaan'),('11116','Jai');
+INSERT INTO `student` VALUES ('11111','Deena'),('11112','Gautham'),('11113','Geetha'),('11114','Hima'),('11115','Ishaan'),('11116','Jai'),('11122','Riya'),('11124','Rehan'),('11134','Tessy');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-27 12:45:51
+-- Dump completed on 2021-11-28 17:46:32

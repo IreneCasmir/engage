@@ -149,3 +149,7 @@ ul center{
 .menu li{
 	border-bottom:1px solid #E7E7E7;
 }
+
+#grad1 {
+	background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+  }

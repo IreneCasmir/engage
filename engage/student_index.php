@@ -1,6 +1,5 @@
 
 <?php
-//session_start();
 include('head.php');
 require_once('login_check.php');
 include('connect.php');?>
@@ -93,30 +92,26 @@ include('connect.php');?>
 {
     color:Black;
 }
-.openbtn {
+.openbtn,.box {
   font-size: 20px;
   cursor: pointer;
-  background-color: Silver;
   color: Blue;
-  padding: 10px 15px;
+  padding: 10px;
+  text-align:center;
   border: none;
 }
 
-.openbtn:hover {
-  background-color: Grey;
-}
+
 </style>  
     
     
     
     </head>
-        <body >
+        <body style="background-image: linear-gradient(to right, grey, white);">
 
        <?php  
-        $u = $_COOKIE['uid'];
-        //$v="Select `s_name` from `student` where s_id='$u'";
-        //$conn = new mysqli("localhost", "root", "mysql", "mini_lms") or die(mysqli_error());
 
+        $u = $_COOKIE["uid"]; 
         $query = mysqli_query($conn,"Select `course_name` from `course` where `course_id` in (select `course_id` from `courses_taken` where s_id='$u')");
         while ($row = mysqli_fetch_assoc($query)) {
             if($row[course_name] == 'Machine Learning')
@@ -128,7 +123,18 @@ include('connect.php');?>
                 </li>
             </ul>
             </div>
-            <?php } 
+            <?php }
+            
+            if($row[course_name] == 'Algebra')
+            {?>
+            <div class = "home">
+            <ul>
+                <li>
+                    <a href="algebra.php"><div class="box">Algebra</div></a>
+                </li>
+            </ul>
+            </div>
+            <?php }
 
             if($row[course_name] == 'Logic')
             {?>
@@ -143,7 +149,7 @@ include('connect.php');?>
 
             if($row[course_name] == 'Probability')
             {?>
-            <div class = "home">
+            <div  class = "home">
             <ul>
                 <li>
                     <a href="prob.php"><div class="box">Probability</div></a>
@@ -176,7 +182,7 @@ include('connect.php');?>
 
             if($row[course_name] == 'Computer Architecture')
             {?>
-            <div class = "home">
+            <div class="home">
             <ul>
                 <li>
                     <a href="co.php"><div class="box">Computer Architecture</div></a>
@@ -199,26 +205,16 @@ include('connect.php');?>
      { 
         echo nl2br("<h4>".$row['course_id']." - ".$row['quiz_name']." on ".$row['quiz_date']."\n\n</h4>");
 
-        /*
-        if(!(is_null($row['Quiz2'])))
-        { 
-            echo nl2br("<h4>".$row['course_id']."-Quiz2 on ".$row['Quiz2']."\n\n</h4>");
-        }
-
-        if(!(is_null($row['Quiz3'])))
-        { 
-            echo nl2br("<h4>".$row['course_id']."-Quiz3 on ".$row['Quiz3']."\n\n</h4>");
-        }*/
+       
      } ?>
 
-<button id="gotoquiz" class="openbtn" >Attempt Quizzes</button>
+<!--<button id="gotoquiz" class="openbtn" >Attempt Quizzes</button>
 
 <script type="text/javascript">
     document.getElementById("gotoquiz").onclick = function () {
         location.href = "quizview.php";
     };
-</script>
-
+</script>-->
 
 </div>
 <script>
@@ -231,8 +227,9 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
+
+
 </script>
    
-
     </body>
 </html>

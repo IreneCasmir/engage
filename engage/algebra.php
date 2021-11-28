@@ -1,7 +1,7 @@
 <?php
 //session_start();
-//$_COOKIE['course'] = "CS6789";
-setcookie("course","CS6789",time()+3600);
+//$_SESSION['course'] = "CS2345";
+setcookie("course","CS9009",time()+3600);
 include('head.php');
 require_once('login_check.php');
 include('connect.php');?>
@@ -18,7 +18,7 @@ include('connect.php');?>
 <div class="col-lg-8">
 <div class="page-header-title">
 <div class="d-inline">
-<h2> <strong>Cryptography
+<h2> <strong>Algebra
             </strong>
 </h2>
 </div>
@@ -26,6 +26,8 @@ include('connect.php');?>
 </div>
 <div class="col-lg-4">
 <div class="page-header-breadcrumb">
+<ul class="breadcrumb-title">
+<li class="breadcrumb-item">
 <?php 
         if($_COOKIE['username'] == 'Student')
         {?> 
@@ -36,7 +38,6 @@ include('connect.php');?>
         {?> 
     <a href="teacher_index.php"><i class="feather icon-home"></i> </a>
     <?php } ?>
-
     </li>
     </ul>
 
@@ -62,7 +63,7 @@ include('connect.php');?>
 <!DOCTYPE html>
 <html lang="english">
         <head>
-        <title>Cryptography</title>
+        <title>Algebra</title>
         <meta charset = "utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="styles.css">
@@ -114,7 +115,6 @@ include('connect.php');?>
     {?>
         
         <body style="background-image: linear-gradient(to right, grey, white);">
-
         <div class="container-fluid">
             <form action="resources.php" method="post">
 
@@ -159,8 +159,7 @@ include('connect.php');?>
 
     else if($_COOKIE['username'] == 'Teacher')
     {?>
-        <body style="background-image: linear-gradient(to right, grey, white);">
-
+<body style="background-image: linear-gradient(to right, grey, white);">
         <div class="container-fluid">
             <form action="resources.php" method="post">
 
@@ -223,5 +222,4 @@ include('connect.php');?>
         </body>
     <?php } ?>
     
-
 </html>

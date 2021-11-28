@@ -3,7 +3,9 @@
 include('head.php');
 include('connect.php');
 ?>
-
+<!DOCTYPE html>
+<html lang="english">
+<body style="background-image: linear-gradient(to right, grey, white);">
 <div class="pcoded-content">
 <div class="pcoded-inner-content">
 
@@ -60,14 +62,6 @@ include('connect.php');
     
     <div class="form-group row">
                 <br />
-				<!--<div class="form-group">
-				  <select name="quizname" class="form-control" required="required">
-				    <option value="">-- Select One --</option>
-				    <option value="Quiz1">Quiz1</option>
-				    <option value="Quiz2">Quiz2</option>  
-                    <option value="Quiz3">Quiz3</option>    
-				  </select>
-				</div>-->
                 <label style="margin-right:5px;">Enter Quiz name here </label>
                 <input style="width:auto;" type="text" class="form-control" name="quiz_name" placeholder="Enter the name of the Quiz" required="" >
 
@@ -78,13 +72,10 @@ include('connect.php');
             <input type="date" class="form-control" name="date" placeholder="Enter the Date for the Quiz" required="" >
         </div>
         <div class="col-sm-8">
-            <label style="margin-right:5px;margin-top:10px;">Quiz duration in minutes </label>
+            <label style="margin-right:5px;margin-top:10px;">Quiz duration in seconds </label>
             <input style="width:100px;margin-top:10px;" type="text" class="form-control" name="durn" placeholder="Enter the duration for the Quiz" required="" >
         </div>
-       <!-- <div class="col-sm-6">
-            <label style="margin-right:5px;margin-top:10px;">Enter Quiz time here </label>
-            <input style="width:400px;margin-top:10px;" type="time" step='1' min="07:00:00" max="17:00:00" class="form-control" name="set_time" placeholder="Quiz time here" required="" >
-        </div>-->
+       
 
     </div>
     <div class="form-group row">
@@ -118,20 +109,28 @@ if(isset($_POST['set_date'])){
 	$cid = $_COOKIE['course'];
     $date = $_POST['date'];
     $qtype = $_POST['quiz_name'];
+    $query = $conn->query("select * from exams where quiz_date=$date");
+    $fetch = $query->fetch_array();
+	$valid = $query->num_rows;
     //$q_time = $_POST['set_time'];
-        if($date < date("Y-m-d"))
+        if($date <= date("Y-m-d"))
         {
             echo "<script>alert('Set a Valid date!')</script>";
 			echo "<script>window.location = 'set_quizzes.php'</script>";
         }
+        else if( $valid > 0)
+        {
+            echo "<script>alert('Please reschedule the quiz!Another Quiz is already scheduled for this day!')</script>";
+			echo "<script>window.location = 'set_quizzes.php'</script>";
+        }
         else
         {
-           $durn = $_POST['durn'];
+           $durn = $_POST['durn'] ;
            $sql = "Insert into exams (course_id,quiz_name,quiz_date,quiz_time,duration) values ('$cid','$qtype','$date','10:00:00','$durn')";
            $result = $conn->query($sql);
 
-            $query = "CALL `table_creation` ('$cid','$qtype')";
-            $result=mysqli_query($conn,$query);
+            //$query = "CALL `table_creation` ('$cid','$qtype')";
+            //$result=mysqli_query($conn,$query);
         }
     }
 
@@ -159,3 +158,5 @@ if(isset($_POST['set_date'])){
 $conn->close();
 
 ?>
+</body>
+</html>

@@ -114,7 +114,7 @@ include('connect.php');?>
         if($_COOKIE['username'] == 'Student')
     {?>
         
-        <body>
+        <body style="background-image: linear-gradient(to right, grey, white);">
         <div class="container-fluid">
             <form action="resources.php" method="post">
 
@@ -159,7 +159,7 @@ include('connect.php');?>
 
     else if($_COOKIE['username'] == 'Teacher')
     {?>
-<body>
+<body style="background-image: linear-gradient(to right, grey, white);">
         <div class="container-fluid">
             <form action="resources.php" method="post">
 

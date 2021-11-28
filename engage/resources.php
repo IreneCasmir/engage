@@ -16,7 +16,7 @@ include('connect.php');
 <div class="col-lg-8">
 <div class="page-header-title">
 <div class="d-inline">
-<h4>Resources</h4>
+
 
 </div>
 </div>
@@ -58,6 +58,8 @@ include('connect.php');
 
 <!DOCTYPE html>
 <html lang="english">
+
+
         <head>
         <title>Resources</title>
 
@@ -67,7 +69,7 @@ include('connect.php');
         <link rel = "stylesheet" type = "text/css" href = "bootstrap.css" />
 		<link rel = "stylesheet" type = "text/css" href = "customize.css" />
         </head>
-    <body>
+    <body style="background-image: linear-gradient(to right, grey, white);">
     <form action="add_check.php" method="post">
     <div style="margin: auto; border: 1px solid white; width: 40%;">
     
@@ -88,15 +90,7 @@ include('connect.php');
         </div>
         </form>
         <label style="margin:40px;font-size:40px;"> Resources</label>
-        <!--<div style="margin: auto; border: 1px solid white; width: 40%;">
-        <form action="add_check.php" method="post">
-        <div class = "form-group">
-			<button class  = "btn btn-success form-control" type = "submit" value = "submit" name = "VIEWlinks" ><span class = "glyphicon glyphicon-log-in"></span> 
-                View Resources 
-            </button>
-        </div>
-        </form>
-        </div>-->
+        
 
       <?php  
         $course = $_COOKIE['course'];

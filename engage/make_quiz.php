@@ -18,7 +18,8 @@ include('connect.php');
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
-  <body role="document">
+  <body  style="background-image: linear-gradient(to right, grey, white);"
+role="document">
     
 
 
@@ -109,21 +110,22 @@ include('connect.php');
         </form>
     </div>
      </div>
-	 <?php if(isset($_POST['add'])){
-$tname1 = $_COOKIE['course']."_";
-$tname = $tname1.$_POST['qname'];
-$fetchqry = "select * from $tname";
+	 <?php 
+     if(isset($_POST['add'])){
+$cname = $_COOKIE['course'];
+$qname = $_POST['qname'];
+/*$fetchqry = "select * from $tname";
 $result=mysqli_query($conn,$fetchqry);
 $num=mysqli_num_rows($result);
-$id = $num + 1;
+$id = $num + 1;*/
 $que = $_POST['question'];
 $ans = $_POST['correct_answer'];
 $opt1 = $_POST['option1'];
 $opt2 = $_POST['option2'];
 $opt3 = $_POST['option3'];
 
-$qry = "insert into $tname (qid,qn,opt1,opt2,opt3,ans) values ('$id','$que','$opt1','$opt2','$opt3','$ans')";
-
+//$qry = "insert into $tname (qid,qn,opt1,opt2,opt3,ans) values ('$id','$que','$opt1','$opt2','$opt3','$ans')";
+$qry = "insert into Questions (course_id,qname,qn,ans,opt1,opt2,opt3) values ('$cname','$qname','$que','$ans','$opt1','$opt2','$opt3')";
 $done = mysqli_query($conn,$qry);
 if($done==TRUE){
 	echo "Question and Answers Sumbmitted Succesfully";

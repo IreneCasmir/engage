@@ -74,7 +74,7 @@ include('connect.php');?>
 
 <?php
     
-    $conn = mysqli_connect('localhost','root','mysql','mini_lms') or die("could not connect to database");
+    //$conn = mysqli_connect('localhost','root','mysql','mini_lms') or die("could not connect to database");
     $course = $_COOKIE['course'];
 
     if(isset($_POST['ADDlink']))

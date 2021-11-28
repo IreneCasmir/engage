@@ -12,7 +12,7 @@ include('connect.php');
 		if (isset($_POST['password'])) {
     			$password = $_POST['password'];
 		}
-		$conn = new mysqli("localhost", "root", "mysql", "mini_lms") or die(mysqli_error());
+		//$conn = new mysqli("localhost", "root", "mysql", "mini_lms") or die(mysqli_error());
 		if($_POST['username'] == 'Student')
     	{
 			$query = $conn->query("SELECT * FROM `student_login` WHERE `id` = '$uid'") or die(mysqli_error());
@@ -29,8 +29,6 @@ include('connect.php');
 		if($valid > 0){
 			if(password_verify($password,$fetch['password']))
 				{
-				  /*$_SESSION['uid'] = $uid;
-				  $_SESSION['username'] = $username;*/
 				  
 				  if($_POST['username'] == 'Student'){
 					setcookie("uid",$_POST["uid"],time()+3600);
