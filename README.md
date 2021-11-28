@@ -13,7 +13,9 @@ To set up:
     * $DB_DBNAME = mysql database name
 in the configuration files of apache(if not using apache via CLI) or else in the operating system ENV variables.
 
-* Configure the file /etc/apache2/sites-available/000-default.conf as follows(or the necessary apache confi files to set the environment variables)
+* Configure the file /etc/apache2/sites-available/000-default.conf as follows(or the necessary apache config files to set the environment variables)
+
+
 ![alt text](/engage/images/config.png)
 
 The index(or the first page to be opened is) ***index.php(or engage/index.php)***
